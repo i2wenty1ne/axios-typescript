@@ -1,0 +1,19 @@
+{
+  "name": "axios-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "openapi:fetch-schema": "curl --fail -X GET https://petstore.swagger.io/v2/swagger.json && curl https://petstore.swagger.io/v2/swagger.json > ./src/api/openapi.json",
+    "openapi:generate": "openapi-generator-cli generate -g typescript-axios -i ./src/api/openapi.json -o ./src/api/generated/ -c ./src/api/config.yaml --skip-validate-spec",
+    "openapi": "mkdir -p ./src/api/ && npm run openapi:fetch-schema && npm run openapi:generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "axios": "^1.5.1"
+  }
+}
